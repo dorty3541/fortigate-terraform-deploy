@@ -59,13 +59,13 @@ resource "aws_eip" "LBPublicIP" {
 
 resource "aws_eip" "ActivePublicIP" {
   depends_on        = [aws_instance.fgtactive]
-  vpc               = true
+  domain         = "vpc"
   network_interface = aws_network_interface.eth0.id
 }
 
 resource "aws_eip" "PassivePublicIP" {
   depends_on        = [aws_instance.fgtpassive]
-  vpc               = true
+  domain         = "vpc"
   network_interface = aws_network_interface.passiveeth0.id
 }
 

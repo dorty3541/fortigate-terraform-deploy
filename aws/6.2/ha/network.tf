@@ -69,19 +69,19 @@ resource "aws_route_table_association" "internal2associate" {
 
 resource "aws_eip" "ClusterPublicIP" {
   depends_on        = [aws_network_interface.eth0]
-  vpc               = true
+  domain         = "vpc"
   network_interface = aws_network_interface.eth0.id
 }
 
 resource "aws_eip" "MGMTPublicIP" {
   depends_on        = [aws_network_interface.eth3]
-  vpc               = true
+  domain         = "vpc"
   network_interface = aws_network_interface.eth3.id
 }
 
 resource "aws_eip" "PassiveMGMTPublicIP" {
   depends_on        = [aws_network_interface.passiveeth3]
-  vpc               = true
+  domain         = "vpc"
   network_interface = aws_network_interface.passiveeth3.id
 }
 
